@@ -1,0 +1,22 @@
+Week 1: Startup meeting, learn JSAV and how
+to integrate Sphinx
+
+Week 2: Add minor account features (including database)
+and finish the Binary chapter.
+
+Week 3: Finish account features and the hexadecimal chapter.
+Start Simple Logic Gates and Boolean chapters.
+
+Week 4: Mid point research, finish SLG and Boolean
+
+Week 5: Make adjustment according to feedback.
+
+Week 6: Karnaugh
+
+Week 7: Buffer Week
+
+Week 8: Thorough Testing and Fixings, Optimizing and cleanup.
+
+Week 9: Start getting serious about the report
+
+Week 10: Finish Report
