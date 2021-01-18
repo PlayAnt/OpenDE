@@ -1,0 +1,187 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Introduction to Binary &#8212; OpenDE 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Shifting and fractions" href="shiftingandfractions.html" />
+    <link rel="prev" title="Binary" href="binary.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction-to-binary">
+<h1>Introduction to Binary<a class="headerlink" href="#introduction-to-binary" title="Permalink to this headline">¶</a></h1>
+<p>Binary is a counting system that is of the base-2 in difference from the normal
+decimal (base-10) system that you are probably most used to.</p>
+<p>Instead of using all the 10 digits in different combinations to represent
+numbers it uses only ones and zeros.</p>
+<p>In a binary number each digit represents a 2^x where x is the position - one
+from the right. The first digit from right therefore represent the number 1,
+the second represents 2 etc.</p>
+<p>Binary numbers are often represented with 8 or 16 digits, for reasons explained
+in the “Bits and words” sub-chapter.</p>
+<p>The table below simplifies what is written.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Position</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>2⁷</td>
+<td>2⁶</td>
+<td>2⁵</td>
+<td>2⁴</td>
+<td>2³</td>
+<td>2²</td>
+<td>2¹</td>
+<td>2⁰</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>128</td>
+<td>64</td>
+<td>32</td>
+<td>16</td>
+<td>8</td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>The number 00110011 is therefore:</p>
+<p>0*2⁷ + 0*2⁶ + 1*2⁵ + 1*2⁴ + 0*2³ + 0*2² + 1*2¹ + 1*2⁰ =</p>
+<p>2⁵ + 2⁴ + 2¹ + 2⁰ =</p>
+<p>32 + 16 + 2 + 1 =</p>
+<p>51</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">OpenDE</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="binary.html">Binary</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction to Binary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shiftingandfractions.html">Shifting and fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bitsandwords.html">Bits and words</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signed.html">Signed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="onescomplement.html">One’s Complement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twoscomplement.html">Two’s Complement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binarysummary.html">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hexadecimals.html">Hexadecimals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logicgates.html">Logic Gates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="booleanalgebra.html">Boolean Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="karnaughdiagrams.html">Karnaugh Diagrams</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="binary.html">Binary</a><ul>
+      <li>Previous: <a href="binary.html" title="previous chapter">Binary</a></li>
+      <li>Next: <a href="shiftingandfractions.html" title="next chapter">Shifting and fractions</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, magru207.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/introductiontobinary.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
