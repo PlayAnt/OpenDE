@@ -1,2 +1,0 @@
-Multilevel Karnaugh Diagrams
-============================
