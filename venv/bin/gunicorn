@@ -1,4 +1,4 @@
-#!/home/margu207/Exjobb/venv/bin/python3
+#!/home/margu207/Exjobb/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

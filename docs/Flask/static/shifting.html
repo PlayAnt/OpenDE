@@ -27,9 +27,6 @@
           <li class="nav-item">
             <a href="/index">Index</a>
           </li>
-          <li class="nav-item">
-            <a href="/accountSetUp">Account</a>
-          </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -65,7 +62,7 @@
 
       <div class="col-md-6">
         <h3>Fractions</h3>
-        <p>Fractions in binary can be performed but is a bit more tricky. The numbers
+        <p>Fractions in binary can be done but is a bit more tricky. The numbers
           after the dot in a fractional binary number represents the power of negative
           numbers. See the table below for a simple visual explanation.</p>
 
@@ -102,90 +99,90 @@
             <h3>Shifting</h3>
 
             <p>Multiplying a binary number by two is easy, to do so one only need to shift all
-              the digits a step to the left and adding a 0 where the first digit used to be.
+              the digits a step to the left and add a 0 where the first digit used to be.
               This is called a left shift. For example:</p>
 
-              <p>01100110 multiplied with two =
-                11001100</p>
+            <p>01100110 x 2 =
+              11001100</p>
 
-                <p>Shifting to the right is basically a division by 2 and functions in a very similar
-                  way, shift all the digits to the right and adding a zero on the left side.
-                  For example:</p>
+            <p>Shifting to the right is basically a division by 2 and functions in a very similar
+              way, shift all the digits to the right and add a zero on the left side.
+              For example:</p>
 
-                  <p>0110 0110 divided by two =
-                    0011 0011</p>
+            <p>0110 0110 / 2 =
+              0011 0011</p>
 
-                    <p>Unless you use fractions he decimal will be lost and a true division by two
-                      will not give the true answer when you right shift odd numbers.</p>
+            <p>Unless you use fractions the decimal will be lost and the division by two
+              will not give the true answer when you right shift odd numbers.</p>
 
-                      <p>0011 0011 divided by two =
-                        0001 1001</p>
+            <p>0011 0011 / 2 =
+              0001 1001</p>
 
-                        <h2>Exercise</h2>
-                      </div>
-                    </div>
+      <h2>Exercise</h2>
+    </div>
+  </div>
 
-                        <form>
-                          <div class="row padding" >
-                            <div class="col-md-6" >
-                              <button id="startButton" type="submit" onclick="loadQuestion('Shifting and Fractions'); return false;" class="btn btn-primary btn-lg btn-block">Start Exercise</button>
-                            </div>
-                          </div>
-                        </form>
+      <form>
+        <div class="row padding" >
+          <div class="col-md-6" >
+            <button id="startButton" type="submit" onclick="loadQuestion('Shifting and Fractions'); return false;" class="btn btn-primary btn-lg btn-block">Start Exercise</button>
+          </div>
+        </div>
+      </form>
 
-                        <div id="exerciseBlock" class="container-fluid Padding" style="visibility:hidden">
-                          <form id = "shiftingAnswer">
-                            <div class="row padding">
+      <div id="exerciseBlock" class="container-fluid Padding" style="visibility:hidden">
+        <form id = "shiftingAnswer">
+          <div class="row padding">
 
-                              <div class="col-md-6">
-                                <div id="shiftingQuestion">
+            <div class="col-md-6">
+              <div id="shiftingQuestion">
 
-                                </div>
-                              </div>
-                            </div>
+              </div>
+            </div>
+          </div>
 
-                            <div class="row padding">
-                              <div class="col-md-5">
-                                <div class="form-group">
-                                  <input id=shiftingAnswerField type="text" class="form-control">
-                                </div>
-                              </div>
+          <div class="row padding">
+            <div class="col-md-5">
+              <div class="form-group">
+                <input id=shiftingAnswerField type="text" class="form-control">
+              </div>
+            </div>
 
-                              <div class="col-md-1">
-                                <div class="form-group">
-                                  <button id="answerButton" type="submit" onclick="checkAnswer('Shifting and Fractions'); return false;" class="btn">Answer</button>
-                                </div>
-                              </div>
-                            </div>
+            <div class="col-md-1">
+              <div class="form-group">
+                <button id="answerButton" type="submit" onclick="checkAnswer('Shifting and Fractions'); return false;" class="btn">Answer</button>
+              </div>
+            </div>
+          </div>
 
 
-                            <div class="row padding">
+          <div class="row padding">
 
-                              <div class="col-md-5">
-                                <p> Points Required: </p>
-                              </div>
+            <div class="col-md-5">
+              <p> Points Required: </p>
+            </div>
 
-                              <div class="col-md-7">
-                                <p id="pointsReq"> 0 </p>
-                              </div>
+            <div class="col-md-7">
+              <p id="pointsReq"> 0 </p>
+            </div>
 
-                              <div class="col-md-5">
-                                <p> Your Points: </p>
-                              </div>
+            <div class="col-md-5">
+              <p> Your Points: </p>
+            </div>
 
-                              <div class="col-md-7">
-                                <p id="pointsYour"> 0 </p>
-                              </div>
-                            </div>
+            <div class="col-md-7">
+              <p id="pointsYour"> 0 </p>
+            </div>
+          </div>
 
-                            </div>
-                          </form>
+          </div>
+        </form>
 
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="/binary/bytesandwords">Previous</a></li>
-                      <li class="page-item"><a class="page-link" href="/binary/signed">Next</a></li>
-                    </ul>
-                  </div>
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="/binary/bytesandwords">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="/binary/signed">Next</a></li>
+  </ul>
+</div>
 
-                  </body>
-                  </html>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>OpenDE</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="/static/B00tjs.js" type="text/javascript"></script>
+  <link href="/static/B00tstyle.css" rel="stylesheet">
+  <link rel="icon" href="data:;base64,=">
+</head>
+<body onload="loadKarnaugh();">
+
+  <div class="container">
+    <div class="row">
+      <table>
+        <tr>
+          <th> <p> </p> </th>
+          <th> <p> </p> </th>
+          <th> <p> </p> </th>
+          <th> <p> </p> </th>
+          <th> <p> AB </p> </th>
+          <th> <p> </p> </th>
+        </tr>
+        <tr>
+          <th style="text-align:center"> <p></p> </th>
+          <th style="text-align:center"> <p></p> </th>
+          <th style="text-align:center"> <p> 00 </p> </th>
+          <th style="text-align:center"> <p> 01 </p> </th>
+          <th style="text-align:center"> <p> 11 </p> </th>
+          <th style="text-align:center" > <p> 10 </p> </th>
+        </tr>
+        <tr>
+          <th> <p> </p> </th>
+          <th> <p> 00 </p> </th>
+          <th id="AA"><img id="oneA" src="" width="100" height="100" onclick="mark('AA');"></th>
+          <th id="AB"><img id="oneB" src="" width="100" height="100" onclick="mark('AB');"></th>
+          <th id="AC"><img id="oneC" src="" width="100" height="100" onclick="mark('AC');"></th>
+          <th id="AD"><img id="oneD" src="" width="100" height="100" onclick="mark('AD');"></th>
+        </tr>
+        <tr>
+          <th style="vertical-align:bottom"> <p> CD </p> </th>
+          <th> <p> 01 </p> </th>
+          <th id="BA"><img id="twoA" src="" width="100" height="100" onclick="mark('BA');"></th>
+          <th id="BB"><img id="twoB" src="" width="100" height="100" onclick="mark('BB');"></th>
+          <th id="BC"><img id="twoC" src="" width="100" height="100" onclick="mark('BC');"></th>
+          <th id="BD"><img id="twoD" src="" width="100" height="100" onclick="mark('BD');"></th>
+        </tr>
+        <tr>
+          <th> <p> </p> </th>
+          <th> <p> 11 </p> </th>
+          <th id="CA"><img id="threeA" src="" width="100" height="100" onclick="mark('CA');"></th>
+          <th id="CB"><img id="threeB" src="" width="100" height="100" onclick="mark('CB');"></th>
+          <th id="CC"><img id="threeC" src="" width="100" height="100" onclick="mark('CC');"></th>
+          <th id="CD"><img id="threeD" src="" width="100" height="100" onclick="mark('CD');"></th>
+        </tr>
+        <tr>
+          <th> <p> </p> </th>
+          <th> <p> 10 </p> </th>
+          <th id="DA"><img id="fourA" src="" width="100" height="100" onclick="mark('DA');"></th>
+          <th id="DB"><img id="fourB" src="" width="100" height="100" onclick="mark('DB');"></th>
+          <th id="DC"><img id="fourC" src="" width="100" height="100" onclick="mark('DC');"></th>
+          <th id="DD"><img id="fourD" src="" width="100" height="100" onclick="mark('DD');"></th>
+        </tr>
+      </table>
+    </div>
+
+    <div class="row">
+      <button id="colorButton" onclick="boggle('colorButton'); return false;" style="background-color: #00FF00" class="btn">Change Color</button>
+      <button id="submit" onclick="submitKarnaugh(); return false;" class="btn">Submit</button>
+    </div>
+
+
+  </div>
+
+</body>
+</html>

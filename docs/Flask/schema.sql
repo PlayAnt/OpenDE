@@ -1,16 +1,19 @@
 CREATE TABLE user(
-  email TEXT NOT NULL PRIMARY KEY,
+  email TEXT NOT NULL,
   password TEXT NOT NULL,
   accountType TEXT NOT NULL,
   loggedIn BOOLEAN,
-  token TEXT
+  token TEXT,
+
+  PRIMARY KEY(email, accountType)
 );
 
 CREATE TABLE lessons(
   id INTEGER PRIMARY KEY,
   chapter TEXT NOT NULL,
   subchapter TEXT NOT NULL,
-  points INTEGER NOT NULL
+  points INTEGER NOT NULL,
+  page TEXT NOT NULL
 );
 
 CREATE TABLE solved(
@@ -39,6 +42,28 @@ CREATE TABLE questions(
   FOREIGN KEY (subchapter) REFERENCES lessons(subchapter)
 );
 
+CREATE TABLE gateQuestions(
+  id INTEGER PRIMARY KEY,
+  subchapter TEXT NOT NULL,
+  question  TEXT NOT NULL,
+  answer  TEXT NOT NULL,
+  circuits TEXT NOT NULL,
+  truthTable  TEXT NOT NULL,
+
+  CONSTRAINT fk_lessons_gateQuestions
+  FOREIGN KEY (subchapter) REFERENCES lessons(subchapter)
+);
+
+CREATE TABLE karnaughQuestions(
+  id INTEGER PRIMARY KEY,
+  subchapter TEXT NOT NULL,
+  question TEXT NOT NULL,
+  answer TEXT NOT NULL,
+
+  CONSTRAINT fk_lessons_karnaughQuestions
+  FOREIGN KEY (subchapter) REFERENCES lessons(subchapter)
+);
+
 CREATE TABLE class(
   id INTEGER PRIMARY KEY,
   name TEXT NOT NULL,
@@ -61,4 +86,15 @@ CREATE TABLE classroom(
   FOREIGN KEY (user) REFERENCES user(email),
 
   PRIMARY KEY (classID, user)
+);
+
+CREATE TABLE tokens(
+  id INTEGER PRIMARY KEY,
+  user TEXT NOT NULL,
+  type TEXT NOT NULL,
+  token TEXT NOT NULL,
+  expires TEXT NOT NULL,
+
+  CONSTRAINT fk_token_user
+  FOREIGN KEY (user) REFERENCES user(email)
 );

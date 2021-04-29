@@ -1,0 +1,87 @@
+var width = 60;
+var height = 60;
+var bufferX = 40;
+var bufferY = 10;
+var bufferT = 6;
+var radius = 5;
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var img = document.getElementById("source");
+
+ctx.font = "bold 12px Arial";
+
+ctx.fillText("A", 0, bufferY + height/3);
+ctx.fillText("B", 0, bufferY + 2 * height/3);
+ctx.fillText("C", 0, bufferY*2 + 4* height/3);
+ctx.fillText("D", 0, bufferY*2 + 5* height/3);
+ctx.fillText("Y", bufferX*3+2*width, bufferY*1.5 + height);
+
+ctx.fillText("&", bufferX+width/2-bufferT, bufferY+height/2);
+ctx.fillText("&", bufferX+width/2-bufferT, 2*bufferY + 3*height/2);
+ctx.fillText("&", 2*bufferX+3*width/2-bufferT, 3*bufferY/2 + height);
+
+ctx.lineWidth = "2";
+ctx.strokeStyle = "black";
+
+// 1st gate
+ctx.beginPath();
+ctx.rect(bufferX, bufferY, width, height);
+ctx.stroke();
+
+// 2nd gate
+ctx.beginPath();
+ctx.rect(bufferX, 2*bufferY + height, width, height);
+ctx.stroke();
+
+// 3rd gate
+ctx.beginPath();
+ctx.rect(bufferX*2 + width, height/2 + bufferY*1.5, width, height);
+ctx.stroke();
+
+//A -
+ctx.beginPath();
+ctx.moveTo(10, bufferY + height/3);
+ctx.lineTo(bufferX, bufferY + height/3);
+ctx.stroke();
+
+//B -
+ctx.beginPath();
+ctx.moveTo(10, bufferY + 2*height/3);
+ctx.lineTo(bufferX, bufferY + 2*height/3);
+ctx.stroke();
+
+//C -
+ctx.beginPath();
+ctx.moveTo(10, 2*bufferY + 4*height/3);
+ctx.lineTo(bufferX, 2*bufferY + 4*height/3);
+ctx.stroke();
+
+//D -
+ctx.beginPath();
+ctx.moveTo(10, 2*bufferY + 5*height/3);
+ctx.lineTo(bufferX, 2*bufferY + 5*height/3);
+ctx.stroke();
+
+//1st -
+ctx.beginPath();
+ctx.moveTo(bufferX+width, bufferY*1.5 + 2*height/3);
+ctx.lineTo(bufferX*2+width, bufferY*1.5 + 2*height/3);
+ctx.stroke();
+
+// //1st o
+// ctx.beginPath();
+// ctx.arc(bufferX+width+radius, bufferY*1.5 + 2*height/3, radius, 0, 2 * Math.PI);
+// ctx.stroke();
+
+//2nd -
+ctx.beginPath();
+ctx.moveTo(bufferX+width, bufferY*1.5 + 4*height/3);
+ctx.lineTo(bufferX*2+width, bufferY*1.5 + 4*height/3);
+ctx.stroke();
+
+//3rd -
+ctx.beginPath();
+ctx.moveTo(bufferX*2 + 2*width, bufferY*1.5 + height);
+ctx.lineTo(bufferX*3 + 2*width, bufferY*1.5 + height);
+ctx.stroke();

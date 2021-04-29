@@ -1,42 +1,43 @@
--- USERS ------------------------------------------
-
-INSERT INTO user(email, password, accountType, loggedIn, token)
-VALUES ("superman@jl.com", "lois", 1, 0, "0");
-
-INSERT INTO user(email, password, accountType, loggedIn, token)
-VALUES ("batman@jl.com", "selena", 2, 0, "0");
-
-INSERT INTO user(email, password, accountType, loggedIn, token)
-VALUES ("wonderwoman@jl.com", "steve", 0, 0, "0");
-
 -- LESSONS-- --------------------------------------
 
-INSERT INTO lessons(chapter, subchapter, points)
-VALUES ("Binary", "Introduction to Binary", 10);
+INSERT INTO lessons(chapter, subchapter, points, page)
+VALUES ("Binary", "Introduction to Binary", 10, "binary/introduction");
 
-INSERT INTO lessons(chapter, subchapter, points)
-VALUES ("Binary", "Bytes and Words", 5);
+INSERT INTO lessons(chapter, subchapter, points, page)
+VALUES ("Binary", "Bytes and Words", 5, "binary/bytesandwords");
 
-INSERT INTO lessons(chapter, subchapter, points)
-VALUES ("Binary", "Shifting and Fractions", 5);
+INSERT INTO lessons(chapter, subchapter, points, page)
+VALUES ("Binary", "Shifting and Fractions", 5, "binary/shifting");
 
-INSERT INTO lessons(chapter, subchapter, points)
-VALUES ("Binary", "Signed", 5);
+INSERT INTO lessons(chapter, subchapter, points, page)
+VALUES ("Binary", "Signed", 5, "binary/signed");
 
-INSERT INTO lessons(chapter, subchapter, points)
-VALUES ("Binary", "Ones Complement", 5);
+INSERT INTO lessons(chapter, subchapter, points, page)
+VALUES ("Binary", "Ones Complement", 5, "binary/ones");
 
-INSERT INTO lessons(chapter, subchapter, points)
-VALUES ("Binary", "Twos Complement", 5);
+INSERT INTO lessons(chapter, subchapter, points, page)
+VALUES ("Binary", "Twos Complement", 5, "binary/twos");
 
-INSERT INTO lessons(chapter, subchapter, points)
-VALUES ("Binary", "Binary Summary", 10);
+INSERT INTO lessons(chapter, subchapter, points, page)
+VALUES ("Binary", "Binary Summary", 10, "binary/summary");
 
-INSERT INTO lessons(chapter, subchapter, points)
-VALUES ("Hexadecimals", "Introduction to Hexadecimals", 10);
+INSERT INTO lessons(chapter, subchapter, points, page)
+VALUES ("Hexadecimals", "Introduction to Hexadecimals", 10, "hexadecimal/introduction");
 
-INSERT INTO lessons(chapter, subchapter, points)
-VALUES ("Hexadecimals", "Binary-Hexadecimal-Conversion", 5);
+INSERT INTO lessons(chapter, subchapter, points, page)
+VALUES ("Hexadecimals", "Binary-Hexadecimal-Conversion", 5, "hexadecimal/conversion");
+
+INSERT INTO lessons(chapter, subchapter, points, page)
+VALUES ("Simple Logic Gates", "AND, OR and NOT", 5, "gates/and");
+
+INSERT INTO lessons(chapter, subchapter, points, page)
+VALUES ("Simple Logic Gates", "NAND and NOR", 5, "gates/nand");
+
+INSERT INTO lessons(chapter, subchapter, points, page)
+VALUES ("Simple Logic Gates", "XOR and XNOR", 5, "gates/xor");
+
+INSERT INTO lessons(chapter, subchapter, points, page)
+VALUES ("Boolean Algebra and Kranaugh", "Introduction to Boolean Algebra and Karnaugh", 5, "boolean/introduction");
 
 -- QUESTIONS --------------------------------------
 
@@ -502,12 +503,170 @@ VALUES ("Binary-Hexadecimal-Conversion", "What is 1010 1000 in hexadecimal?", "A
 INSERT INTO questions(subchapter, question, answer)
 VALUES ("Binary-Hexadecimal-Conversion", "What is 1010 1010 in hexadecimal?", "AA");
 
--- CLASSROOM -------------------------------------------------------------------
--- INSERT INTO classroom(classID, user, role)
--- VALUES (1, "Chris Pratt", "For Student");
---
--- INSERT INTO classroom(classID, user, role)
--- VALUES (1, "Chris Evans", "For Student");
---
--- INSERT INTO classroom(classID, user, role)
--- VALUES (1, "Chris Hemsworth", "For Student");
+-- gateQuestions -------------------------------------------------------------------
+-- AND, OR and NOT -----------------------------------------------------------------
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("AND, OR and NOT", "Click on the truth table that fits the circuit A.", "A",
+  "/static/images/questions/0001.png /static/images/questions/777F.png /static/images/questions/7FFF.png /static/images/questions/0007.png", "/static/images/questions/Lesson1:1.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("AND, OR and NOT", "Click on the truth table that fits the circuit C.", "C",
+  "/static/images/questions/0001.png /static/images/questions/7FFF.png /static/images/questions/0007.png /static/images/questions/111F.png", "/static/images/questions/Lesson1:2.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("AND, OR and NOT", "Click on the truth table that fits the circuit C.", "C",
+  "/static/images/questions/0001.png /static/images/questions/7FFF.png /static/images/questions/111F.png /static/images/questions/0007.png", "/static/images/questions/Lesson1:3.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("AND, OR and NOT", "Click on the truth table that fits the circuit A.", "A",
+  "/static/images/questions/0777.png /static/images/questions/0001.png /static/images/questions/111F.png /static/images/questions/0007.png", "/static/images/questions/Lesson1:4.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("AND, OR and NOT", "Click on the truth table that fits the circuit D.", "D",
+  "/static/images/questions/777F.png /static/images/questions/111F.png /static/images/questions/0001.png /static/images/questions/7FFF.png", "/static/images/questions/Lesson1:5.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("AND, OR and NOT", "Click on the truth table that fits the circuit B.", "B",
+  "/static/images/questions/111F.png /static/images/questions/777F.png /static/images/questions/7FFF.png /static/images/questions/0007.png", "/static/images/questions/Lesson1:6.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("AND, OR and NOT", "Click on the truth table that fits the circuit B.", "B",
+  "/static/images/questions/2A.png /static/images/questions/02.png /static/images/questions/BF.png /static/images/questions/AB.png", "/static/images/questions/Lesson1:7.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("AND, OR and NOT", "Click on the truth table that fits the circuit C.", "C",
+  "/static/images/questions/BF.png /static/images/questions/02.png /static/images/questions/2A.png /static/images/questions/AB.png", "/static/images/questions/Lesson1:8.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("AND, OR and NOT", "Click on the truth table that fits the circuit D.", "D",
+  "/static/images/questions/2A.png /static/images/questions/BF.png /static/images/questions/02.png /static/images/questions/AB.png", "/static/images/questions/Lesson1:9.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("AND, OR and NOT", "Click on the truth table that fits the circuit C.", "C",
+  "/static/images/questions/02.png /static/images/questions/2A.png /static/images/questions/BF.png /static/images/questions/AB.png", "/static/images/questions/Lesson1:10.png");
+
+-- NAND and NOR --------------------------------------------------------------------
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("NAND and NOR", "Click on the truth table that fits the circuit D.", "D",
+  "/static/images/questions/777F.png /static/images/questions/7FFF.png /static/images/questions/0777.png /static/images/questions/111F.png", "/static/images/questions/Lesson2:1.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("NAND and NOR", "Click on the truth table that fits the circuit C.", "C",
+  "/static/images/questions/7FFF.png /static/images/questions/0001.png /static/images/questions/777F.png /static/images/questions/0007.png", "/static/images/questions/Lesson2:2.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("NAND and NOR", "Click on the truth table that fits the circuit C.", "C",
+  "/static/images/questions/0777.png /static/images/questions/777F.png /static/images/questions/7FFF.png /static/images/questions/0001.png", "/static/images/questions/Lesson2:3.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("NAND and NOR", "Click on the truth table that fits the circuit B.", "B",
+  "/static/images/questions/777F.png /static/images/questions/0777.png /static/images/questions/7FFF.png /static/images/questions/0001.png", "/static/images/questions/Lesson2:4.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("NAND and NOR", "Click on the truth table that fits the circuit C.", "C",
+  "/static/images/questions/111F.png /static/images/questions/0777.png /static/images/questions/0007.png /static/images/questions/0001.png", "/static/images/questions/Lesson2:5.png");
+
+INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+VALUES ("NAND and NOR", "Click on the truth table that fits the circuit A.", "A",
+  "/static/images/questions/0001.png /static/images/questions/777F.png /static/images/questions/7FFF.png /static/images/questions/111F.png", "/static/images/questions/Lesson2:6.png");
+
+  -- XOR and XNOR --------------------------------------------------------------------
+  -- INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+  -- VALUES ("XOR and XNOR", "Click on the circuit that fits the truth table D.", "D",
+  --   "/static/images/questions/Lesson3:2.png /static/images/questions/Lesson3:6.png /static/images/questions/Lesson3:4.png /static/images/questions/Lesson3:1.png", "/static/images/questions/6996.png");
+  --
+  -- INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+  -- VALUES ("XOR and XNOR", "Click on the circuit that fits the truth table A.", "A",
+  --   "/static/images/questions/Lesson3:5.png /static/images/questions/Lesson3:3.png /static/images/questions/Lesson3:2.png /static/images/questions/Lesson3:1.png", "/static/images/questions/9669.png");
+  --
+  -- INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+  -- VALUES ("XOR and XNOR", "Click on the circuit that fits the truth table B.", "B",
+  --   "/static/images/questions/Lesson3:4.png /static/images/questions/Lesson3:3.png /static/images/questions/Lesson3:2.png /static/images/questions/Lesson3:6.png", "/static/images/questions/6996.png");
+  --
+  -- INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+  -- VALUES ("XOR and XNOR", "Click on the circuit that fits the truth table D.", "D",
+  --   "/static/images/questions/Lesson3:3.png /static/images/questions/Lesson3:5.png /static/images/questions/Lesson3:1.png /static/images/questions/Lesson3:4.png", "/static/images/questions/9669.png");
+  --
+  -- INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+  -- VALUES ("XOR and XNOR", "Click on the circuit that fits the truth table C.", "C",
+  --   "/static/images/questions/Lesson3:2.png /static/images/questions/Lesson3:4.png /static/images/questions/Lesson3:5.png /static/images/questions/Lesson3:6.png", "/static/images/questions/6996.png");
+  --
+  -- INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+  -- VALUES ("XOR and XNOR", "Click on the circuit that fits the truth table B.", "B",
+  --   "/static/images/questions/Lesson3:3.png /static/images/questions/Lesson3:6.png /static/images/questions/Lesson3:5.png /static/images/questions/Lesson3:1.png", "/static/images/questions/9669.png");
+
+  INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+  VALUES ("XOR and XNOR", "Click on the circuit that fits the truth table D.", "D",
+    "/static/images/questions/0006.png /static/images/questions/111F.png /static/images/questions/0999.png /static/images/questions/EFFE.png", "/static/images/questions/Lesson3:7.png");
+
+  INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+  VALUES ("XOR and XNOR", "Click on the circuit that fits the truth table A.", "A",
+    "/static/images/questions/0999.png /static/images/questions/7778.png /static/images/questions/0006.png /static/images/questions/111F.png", "/static/images/questions/Lesson3:8.png");
+
+  INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+  VALUES ("XOR and XNOR", "Click on the circuit that fits the truth table B.", "B",
+    "/static/images/questions/7778.png /static/images/questions/8887.png /static/images/questions/EFFE.png /static/images/questions/0006.png", "/static/images/questions/Lesson3:9.png");
+
+  INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+  VALUES ("XOR and XNOR", "Click on the circuit that fits the truth table D.", "D",
+    "/static/images/questions/0006.png /static/images/questions/7778.png /static/images/questions/8887.png /static/images/questions/111F.png", "/static/images/questions/Lesson3:10.png");
+
+  INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+  VALUES ("XOR and XNOR", "Click on the circuit that fits the truth table C.", "C",
+    "/static/images/questions/8887.png /static/images/questions/7778.png /static/images/questions/0006.png /static/images/questions/0999.png", "/static/images/questions/Lesson3:11.png");
+
+  INSERT INTO gateQuestions(subchapter, question, answer, circuits, truthTable)
+  VALUES ("XOR and XNOR", "Click on the circuit that fits the truth table B.", "B",
+    "/static/images/questions/EFFE.png /static/images/questions/7778.png /static/images/questions/111F.png /static/images/questions/0999.png", "/static/images/questions/Lesson3:12.png");
+
+  -- Karnaugh --------------------------------------------------------------------
+  INSERT INTO karnaughQuestions(subchapter, question, answer)
+  VALUES ("Introduction to Boolean Algebra and Karnaugh",
+    "Fill in with colors in the order green, yellow, red and blue: <b> A + CD + BC'D' </b>",
+    "0 2 A 8 0 0 8 8 4 4 C C 0 0 8 8 ");
+
+  INSERT INTO karnaughQuestions(subchapter, question, answer)
+  VALUES ("Introduction to Boolean Algebra and Karnaugh",
+    "Fill in with colors in the order green, yellow, red and blue: <b> A'B' + B'D' + A'CD </b>",
+    "C 0 0 4 8 0 0 0 A 2 0 0 C 0 0 4 ");
+
+  INSERT INTO karnaughQuestions(subchapter, question, answer)
+  VALUES ("Introduction to Boolean Algebra and Karnaugh",
+    "Fill in with colors in the order green, yellow, red and blue: <b> A'BCD' + AB'C'D' + ACD + A'BC'D </b>",
+    "0 0 0 4 0 1 0 0 0 0 2 2 0 8 0 0 ");
+
+  INSERT INTO karnaughQuestions(subchapter, question, answer)
+  VALUES ("Introduction to Boolean Algebra and Karnaugh",
+    "Fill in with colors in the order green, yellow, red and blue: <b> BCD + A'B'D + AB'C'D' </b>",
+    "0 0 0 2 4 0 0 0 4 8 8 0 0 0 0 0 ");
+
+
+  INSERT INTO karnaughQuestions(subchapter, question, answer)
+  VALUES ("Introduction to Boolean Algebra and Karnaugh",
+    "Fill in with colors in the order green, yellow, red and blue: <b> AB + AC'D + BC </b>",
+    "0 0 8 0 0 0 C 4 0 2 A 0 0 2 A 0 ");
+
+  INSERT INTO karnaughQuestions(subchapter, question, answer)
+  VALUES ("Introduction to Boolean Algebra and Karnaugh",
+    "Fill in with colors in the order green, yellow, red and blue: <b> A' + B'D + B'C'D' </b>",
+    "A 8 0 2 C 8 0 4 C 8 0 4 8 8 0 0 ");
+
+  INSERT INTO karnaughQuestions(subchapter, question, answer)
+  VALUES ("Introduction to Boolean Algebra and Karnaugh",
+    "Fill in with colors in the order green, yellow, red and blue: <b> B + D + A'B'C'D' </b>",
+    "2 8 8 0 4 C C 4 4 C C 4 0 8 8 0 ");
+
+  INSERT INTO karnaughQuestions(subchapter, question, answer)
+  VALUES ("Introduction to Boolean Algebra and Karnaugh",
+    "Fill in with colors in the order green, yellow, red and blue: <b> BCD' + A'B'C' + ABD' + A'B'D </b>",
+    "4 0 2 0 5 0 0 0 1 0 0 0 0 8 A 0 ");
+
+  INSERT INTO karnaughQuestions(subchapter, question, answer)
+  VALUES ("Introduction to Boolean Algebra and Karnaugh",
+    "Fill in with colors in the order green, yellow, red and blue: <b> A + C + B' + D' </b>",
+    "3 1 9 B 2 0 8 A 6 4 C E 7 5 D F ");
+
+  INSERT INTO karnaughQuestions(subchapter, question, answer)
+  VALUES ("Introduction to Boolean Algebra and Karnaugh",
+    "Fill in with colors in the order green, yellow, red and blue: <b> A' + B'D + BC </b>",
+    "8 8 0 0 C 8 0 4 C A 2 4 8 A 2 0 ");

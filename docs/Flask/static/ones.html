@@ -27,9 +27,6 @@
           <li class="nav-item">
             <a href="/index">Index</a>
           </li>
-          <li class="nav-item">
-            <a href="/accountSetUp">Account</a>
-          </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -68,161 +65,161 @@
       <div class="col-md-6">
         <h3>One's Complement</h3>
         <p>One's complement is another way to represent negative numbers in binary. Just
-          like in the Signed way there is a sign bit. Representing positive numbers works
+          like in the Signed method there is a sign bit. Representing positive numbers works
           just like normal, keep in mind that the most significant bit must be a zero.</p>
 
-          <p>To represent a negative number you simple use the complement of the positive
-            number you want to use. That means that you just change all 0's into 1's and
-            vice versa.</p>
+        <p>To represent a negative number you simply use the complement of the positive
+          number you want to use. That means that you just change all 0's into 1's and
+          vice versa.</p>
 
-            <p>The table below lists some examples, it is similar to the table in the
-              preceding sub-chapter. Note that the binary representation has changed for
-              negative numbers.</p>
+        <p>The table below lists some examples, it is similar to the table in the
+          preceding sub-chapter. Note that the binary representation has changed for
+          negative numbers.</p>
 
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Binary Representations</th>
-                    <th>Decimal Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>0111 1111</td>
-                    <td>127</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>*</td>
-                    <td>*</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>0101 0101</td>
-                    <td>85</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>*</td>
-                    <td>*</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>0000 0001</td>
-                    <td>1</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>0000 0000</td>
-                    <td>0</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>1111 1111</td>
-                    <td>-0</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>1111 1110</td>
-                    <td>-1</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>*</td>
-                    <td>*</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>1010 1010</td>
-                    <td>-85</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>*</td>
-                    <td>*</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>1000 0000</td>
-                    <td>-127</td>
-                  </tr>
-                </tbody>
-              </table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Binary Representations</th>
+              <th>Decimal Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0111 1111</td>
+              <td>127</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>*</td>
+              <td>*</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>0101 0101</td>
+              <td>85</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>*</td>
+              <td>*</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>0000 0001</td>
+              <td>1</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>0000 0000</td>
+              <td>0</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>1111 1111</td>
+              <td>-0</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>1111 1110</td>
+              <td>-1</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>*</td>
+              <td>*</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>1010 1010</td>
+              <td>-85</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>*</td>
+              <td>*</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>1000 0000</td>
+              <td>-127</td>
+            </tr>
+          </tbody>
+        </table>
 
-              <h2>Exercise</h2>
+        <h2>Exercise</h2>
 
+        </div>
+      </div>
+
+          <form>
+            <div class="row padding" >
+              <div class="col-md-6" >
+                <button id="startButton" type="submit" onclick="loadQuestion('Ones Complement'); return false;" class="btn btn-primary btn-lg btn-block">Start Exercise</button>
               </div>
             </div>
+          </form>
 
-                <form>
-                  <div class="row padding" >
-                    <div class="col-md-6" >
-                      <button id="startButton" type="submit" onclick="loadQuestion('Ones Complement'); return false;" class="btn btn-primary btn-lg btn-block">Start Exercise</button>
-                    </div>
+          <div id="exerciseBlock" class="container-fluid Padding" style="visibility:hidden">
+            <form id = "shiftingAnswer">
+              <div class="row padding">
+
+                <div class="col-md-6">
+                  <div id="shiftingQuestion">
+
                   </div>
-                </form>
+                </div>
+              </div>
 
-                <div id="exerciseBlock" class="container-fluid Padding" style="visibility:hidden">
-                  <form id = "shiftingAnswer">
-                    <div class="row padding">
+              <div class="row padding">
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <input id=shiftingAnswerField type="text" class="form-control">
+                  </div>
+                </div>
 
-                      <div class="col-md-6">
-                        <div id="shiftingQuestion">
+                <div class="col-md-1">
+                  <div class="form-group">
+                    <button id="answerButton" type="submit" onclick="checkAnswer('Ones Complement'); return false;" class="btn">Answer</button>
+                  </div>
+                </div>
+              </div>
+              <div class="row padding">
 
-                        </div>
-                      </div>
-                    </div>
+                <div class="col-md-5">
+                  <p> Points Required: </p>
+                </div>
 
-                    <div class="row padding">
-                      <div class="col-md-5">
-                        <div class="form-group">
-                          <input id=shiftingAnswerField type="text" class="form-control">
-                        </div>
-                      </div>
+                <div class="col-md-7">
+                  <p id="pointsReq"> 0 </p>
+                </div>
 
-                      <div class="col-md-1">
-                        <div class="form-group">
-                          <button id="answerButton" type="submit" onclick="checkAnswer('Ones Complement'); return false;" class="btn">Answer</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row padding">
+                <div class="col-md-5">
+                  <p> Your Points: </p>
+                </div>
 
-                      <div class="col-md-5">
-                        <p> Points Required: </p>
-                      </div>
+                <div class="col-md-7">
+                  <p id="pointsYour"> 0 </p>
+                </div>
+              </div>
+              </div>
+            </form>
 
-                      <div class="col-md-7">
-                        <p id="pointsReq"> 0 </p>
-                      </div>
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="/binary/signed">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="/binary/twos">Next</a></li>
+    </ul>
+  </div>
 
-                      <div class="col-md-5">
-                        <p> Your Points: </p>
-                      </div>
-
-                      <div class="col-md-7">
-                        <p id="pointsYour"> 0 </p>
-                      </div>
-                    </div>
-                    </div>
-                  </form>
-
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="/binary/signed">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="/binary/twos">Next</a></li>
-          </ul>
-        </div>
-
-      </body>
-      </html>
+</body>
+</html>

@@ -2,11 +2,12 @@ import sqlite3
 import sys
 import os
 import json
+import secrets
 
-def getHash(email):
+def getHash(email, accountType):
     conn = sqlite3.connect('database.db')
     hash = ''
-    for row in conn.execute("SELECT password FROM user WHERE email = ?",(email, )):
+    for row in conn.execute("SELECT password FROM user WHERE email = ? AND accountType = ?",(email, accountType)):
         hash = row[0]
         break
     conn.close()
@@ -46,6 +47,10 @@ def addUserToCourse(user, course):
     if course["simpleLogicGates"] == "true":
         addUserToSimpleLogicGates(user)
 
+    if course["booleanAndKarnaugh"] == "true":
+        print("addUserToCourse")
+        addUserToBooleanAndKarnaugh(user)
+
     conn.commit()
     conn.close()
     return 0
@@ -65,6 +70,9 @@ def addCourseToClass(data, admin):
 
     if data["simpleLogicGates"] == "true":
         addUserToSimpleLogicGates(id)
+
+    if data["booleanAndKarnaugh"] == "true":
+        addUserToBooleanAndKarnaugh(id)
 
     conn.commit()
     conn.close()
@@ -97,9 +105,6 @@ def addUserToBinary(user):
         VALUES ('Shifting and Fractions', ?, 0, 0)", (user,));
 
         conn.execute("INSERT INTO solved(lesson, user, points, passed) \
-        VALUES ('Bits and Words', ?, 0, 0)", (user,));
-
-        conn.execute("INSERT INTO solved(lesson, user, points, passed) \
         VALUES ('Signed', ?, 0, 0)", (user,));
 
         conn.execute("INSERT INTO solved(lesson, user, points, passed) \
@@ -113,8 +118,8 @@ def addUserToBinary(user):
 
         conn.commit()
         conn.close()
-
         return 0
+
     conn.close()
     print("user is already added to this course")
     return 1
@@ -140,10 +145,32 @@ def addUserToHexadecimal(user):
 def addUserToSimpleLogicGates(user):
     conn = sqlite3.connect('database.db')
 
-    if (checkExistingUser(user, "Introduction to Simple Logic Gates") == 0) :
+    if (checkExistingUser(user, "AND, OR and NOT") == 0) :
 
         conn.execute("INSERT INTO solved(lesson, user, points, passed) \
-        VALUES ('Introduction to Simple Logic Gates', ?, 0, 0)", (user,));
+        VALUES ('AND, OR and NOT', ?, 0, 0)", (user,));
+
+        conn.execute("INSERT INTO solved(lesson, user, points, passed) \
+        VALUES ('NAND and NOR', ?, 0, 0)", (user,));
+
+        conn.execute("INSERT INTO solved(lesson, user, points, passed) \
+        VALUES ('XOR and XNOR', ?, 0, 0)", (user,));
+
+        conn.commit()
+        conn.close()
+        return 0
+
+    conn.close()
+    print("user is already added to this course")
+    return 1
+
+def addUserToBooleanAndKarnaugh(user):
+    conn = sqlite3.connect('database.db')
+
+    if (checkExistingUser(user, "Introduction to Boolean Algebra nd Karnaugh") == 0) :
+
+        conn.execute("INSERT INTO solved(lesson, user, points, passed) \
+        VALUES ('Introduction to Boolean Algebra and Karnaugh', ?, 0, 0)", (user,));
 
         conn.commit()
         conn.close()
@@ -200,25 +227,28 @@ def validateEmail(email, accountType):
     confirmEmail = ""
     confirmAccountType = ""
 
-    for row in conn.execute("SELECT email FROM user WHERE email = ?", (email,)):
+    for row in conn.execute("SELECT email FROM user WHERE email = ? AND accountType = ?", (email, accountType)):
         confirmEmail = row[0]
         break
 
-    if confirmEmail == email:
-        for row in conn.execute("SELECT accountType FROM user WHERE email = ?", (email,)):
-            confirmAccountType = row[0]
-            break
+    if (confirmEmail != ""):
+        return 1
 
-        if confirmAccountType == accountType:
-            conn.close()
-            return 1
-        else:
-            conn.close()
-            return 0
-
-    else:
-        conn.close()
-        return 0
+    # if confirmEmail == email:
+    #     for row in conn.execute("SELECT accountType FROM user WHERE email = ?", (email,)):
+    #         confirmAccountType = row[0]
+    #         break
+    #
+    #     if confirmAccountType == accountType:
+    #         conn.close()
+    #         return 1
+    #     else:
+    #         conn.close()
+    #         return 0
+    #
+    # else:
+        # conn.close()
+        # return 0
 
     conn.close()
     return 0
@@ -328,7 +358,7 @@ def tokenToEmail(token):
 
 def getQuestion(subchapter):
     conn = sqlite3.connect('database.db')
-    # WHERE id = 1
+
     for row in conn.execute("SELECT question FROM questions WHERE subchapter \
     = ? ORDER BY RANDOM()", (subchapter,)):
         question = row[0]
@@ -341,6 +371,47 @@ def getQuestion(subchapter):
 
     return question
 
+def getGatesQuestion(subchapter):
+    conn = sqlite3.connect('database.db')
+
+    for row in conn.execute("SELECT * FROM gateQuestions WHERE subchapter \
+    = ? ORDER BY RANDOM()", (subchapter,)):
+
+        data = {
+        "question": row[2],
+        "circuits": row[4],
+        "truthTable": row[5]
+        }
+
+        break
+    else:
+        conn.close()
+        return 0
+
+    conn.close()
+
+    return data
+
+def getKarnaughQuestion(subchapter):
+    conn = sqlite3.connect('database.db')
+
+    for row in conn.execute("SELECT * FROM karnaughQuestions WHERE subchapter \
+    = ? ORDER BY RANDOM()", (subchapter,)):
+
+        data = {
+        "question": row[2],
+        "answer": row[3]
+        }
+
+        break
+    else:
+        conn.close()
+        return 0
+
+    conn.close()
+
+    return data
+
 def checkAnswer(subchapter, question, answer):
     conn = sqlite3.connect('database.db')
 
@@ -349,6 +420,58 @@ def checkAnswer(subchapter, question, answer):
     for row in conn.execute("SELECT answer FROM questions WHERE question = ? AND subchapter = ?", (question, subchapter,)):
         correctAnswer = row[0]
         break
+
+    if correctAnswer == answer:
+        conn.close()
+        return 1
+    else:
+        conn.close()
+        return 0
+
+    conn.close()
+
+    return 0
+
+def checkGatesAnswer(subchapter, question, answer, circuits, truthTable):
+    conn = sqlite3.connect('database.db')
+
+    correctAnswer = ""
+
+    for row in conn.execute("SELECT answer FROM gateQuestions WHERE subchapter = ? AND question = ? AND circuits = ? AND truthTable = ?", (subchapter, question, circuits, truthTable)):
+        correctAnswer = row[0]
+        break
+
+    if correctAnswer == answer:
+        conn.close()
+        return 1
+    else:
+        conn.close()
+        return 0
+
+    conn.close()
+
+    return 0
+
+def checkKarnaughAnswer(subchapter, question, answer):
+    conn = sqlite3.connect('database.db')
+
+    correctAnswer = ""
+
+    print(subchapter)
+    print('subchapter')
+
+    print('question')
+    print(question)
+
+    print('answer')
+    print(answer)
+
+    for row in conn.execute("SELECT answer FROM karnaughQuestions WHERE subchapter = ? AND question = ?", (subchapter, question)):
+        correctAnswer = row[0]
+        break
+
+    print('correctAnswer')
+    print(correctAnswer)
 
     if correctAnswer == answer:
         conn.close()
@@ -674,8 +797,19 @@ def loadClasses(classes):
     INNER JOIN class
     ON solved.user = class.id
     WHERE class.name = ?""", (classes,))
+
     courses = cursor.fetchall()
     return courses
+
+def getLink(subchapter):
+    link = ""
+    conn = sqlite3.connect('database.db')
+
+    for row in conn.execute("SELECT page FROM lessons WHERE subchapter = ?", (subchapter,)):
+        link = row[0]
+
+    conn.close()
+    return link
 
 def sumPoints(user):
     conn = sqlite3.connect('database.db')
@@ -694,3 +828,27 @@ def sumPassed(user):
 
     conn.close()
     return sum
+
+def recoverPassword(user, type):
+    expires = '0';
+    tokenControl = 0;
+    token = secrets.token_urlsafe(32)
+
+    conn = sqlite3.connect('database.db')
+
+    for row in conn.execute("SELECT datetime('now', '+1 hours')"):
+        expires = row[0]
+
+    for row in conn.execute("SELECT token FROM tokens WHERE token = ?", (token,)):
+        tokenControl = row[0]
+        if tokenControl.length > 0:
+            conn.close()
+            return recoverPassword(user, type)
+
+
+    conn.execute("INSERT INTO tokens (user, type, token, expires) \
+    VALUES (?, ?, ?, ?)",(user, type , token, expires));
+
+    conn.commit()
+    conn.close()
+    return token

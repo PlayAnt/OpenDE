@@ -28,9 +28,6 @@
           <li class="nav-item">
             <a href="/classroom">Classes</a>
           </li>
-          <li class="nav-item">
-            <a href="/accountSetUp">Account</a>
-          </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -113,6 +110,11 @@
                 <input id="checkbox3" type="checkbox" class="form-check-input">Simple Logic Gates
               </label>
             </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input id="checkbox4" type="checkbox" class="form-check-input">Boolean Algebra and Kranaugh Diagrams
+              </label>
+            </div>
             <div>
               <input type="submit" class="btn btn-info" value="Submit Button">
             </div>
@@ -136,6 +138,8 @@
       </div>
     </form>
 
+    <p> You have to chose which classes the course should include before you add students. </p>
+
     <button type="button" class="btn btn-primary" href="#classSetupModal" data-toggle="modal"> Settings </button>
 
     <h1 id="head"> Students </h1>
@@ -147,21 +151,6 @@
     <button onclick="exportTableToExcel('studentList', 'class')">Export Table Data To Excel File</button>
 
   </div>
-
-  <script type="text/javascript">
-  var tableToExcel = (function() {
-    var uri = 'data:application/vnd.ms-excel;base64,'
-    , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><?xml version="1.0" encoding="UTF-8" standalone="yes"?><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
-    , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
-    , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
-    return function(table, name) {
-      if (!table.nodeType) table = document.getElementById(table)
-      var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
-      window.location.href = uri + base64(format(template, ctx))
-    }
-  })()
-</script>
-
 
 </body>
 </html>

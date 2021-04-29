@@ -181,3 +181,18 @@ Large (lg) devices (desktops, 992px and up)
 Extra (xl) large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 */
+/* 
+body {
+    background: url('http://i.imgur.com/39vY08T.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+} */
+.maintxt {
+    position: relative;
+}
+.maintxt > img, .overlay-text {
+    position: absolute;
+}
+.overlay-text {padding: 150px 50px;}

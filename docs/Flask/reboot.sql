@@ -26,7 +26,12 @@ SELECT * FROM questions;
 SELECT "";
 SELECT "";
 
-SELECT "------classroom------";
-SELECT * FROM classroom;
+SELECT "------gateQuestions------";
+SELECT * FROM gateQuestions;
+SELECT "";
+SELECT "";
+
+SELECT "------karnaughQuestions------";
+SELECT * FROM karnaughQuestions;
 SELECT "";
 SELECT "";

@@ -2,11 +2,14 @@
 import json
 import database_helper
 from uuid import uuid4
-from flask import Flask
+# from flask import Flask
 from flask import Flask , request, jsonify
 from gevent.pywsgi import WSGIServer
 from geventwebsocket.handler import WebSocketHandler
 from flask_bcrypt import Bcrypt
+import smtplib
+import imghdr
+from email.message import EmailMessage
 
 # req( hash(payload + token), email, payload) ->
 # gunicorn==20.0.4
@@ -25,6 +28,19 @@ def home1():
 @app.route('/home', methods=['GET'])
 def home():
     return app.send_static_file("home.html")
+
+@app.route('/passwordRecovery/<email>/<token>', methods=['GET'])
+def passwordRecovery(email, token):
+    database_helper.setToken(token, email)
+    return app.send_static_file("passwordRecovery.html")
+
+@app.route('/testing', methods=['GET'])
+def testing():
+    return app.send_static_file("testing.html")
+
+@app.route('/testing2', methods=['GET'])
+def testing2():
+    return app.send_static_file("testing2.html")
 
 @app.route('/accountSetUp', methods=['GET'])
 def accountSetUp():
@@ -82,6 +98,22 @@ def hexadecimalintroduction():
 def hexaConversion():
     return app.send_static_file("binaryToDecimalConversion.html")
 
+@app.route('/gates/and', methods=['GET'])
+def AND_page():
+    return app.send_static_file("AND.html")
+
+@app.route('/gates/nand', methods=['GET'])
+def NAND_page():
+    return app.send_static_file("NAND.html")
+
+@app.route('/gates/xor', methods=['GET'])
+def XOR_page():
+    return app.send_static_file("XOR.html")
+
+@app.route('/boolean/introduction', methods=['GET'])
+def boolean_page():
+    return app.send_static_file("boolean.html")
+
 @app.route('/boom', methods=['GET'])
 def booms():
     print(socks)
@@ -89,6 +121,7 @@ def booms():
 
 @app.route('/socket', methods=['GET'])
 def sockets():
+    print(request.environ.get('wsgi.websocket'))
     if request.environ.get('wsgi.websocket'):
         ws = request.environ['wsgi.websocket']
         message = ws.receive()
@@ -119,12 +152,19 @@ def sockets():
             print(E)
             return "0"
     return "0"
-
+    #
+    # while True:
+    #     try:
+    #         response = ws.receive()
+    #     except:
+    #         print("I die :(")
+    #         return "0"
+    # return "0"
 
 @app.route('/signin', methods=['POST'])
 def sign_in():
     credentials = request.get_json()
-    hash = bcrypt.check_password_hash(database_helper.getHash(credentials['email']), credentials['password'])
+    hash = bcrypt.check_password_hash(database_helper.getHash(credentials['email'], credentials['accountType']), credentials['password'])
 
     if hash and database_helper.validateEmail(credentials['email'], credentials['accountType']):
         i = 0
@@ -145,6 +185,33 @@ def sign_in():
 
     return jsonify({"success": "false", "message": "Wrong username or password." })
 
+@app.route('/recoverPassword', methods=['POST'])
+def recoverPassword():
+    info = request.get_json()
+    if database_helper.validateEmail(info['email'], info['accountType']):
+        token = database_helper.recoverPassword(info['email'], info['accountType'])
+        database_helper.setToken(info['email'], info['accountType'])
+
+        EMAIL_ADDRESS = "margus058@gmail.com"
+        EMAIL_PASSWORD = "qcuiayirgpbbscjs"
+
+        msg = EmailMessage()
+        msg['Subject'] = 'Password Recovery'
+        msg['From'] = EMAIL_ADDRESS
+        msg['To'] = info['email']
+
+        msg.set_content('Click on the link to recover password: http://127.0.0.1:8000/passwordRecovery/' + info['email'] + '/' + token)
+        # msg-add_alternative("""
+        # <!DOCTYPE html >""")
+
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+            smtp.send_message(msg)
+
+
+        return jsonify({"success": "true", "message": "Successfully signed in." })
+
+    return jsonify({"success": "false", "message": "Wrong username and/or type." })
 
 @app.route('/addusertocourse', methods=['POST'])
 def course():
@@ -245,6 +312,25 @@ def getQuestion():
     data = database_helper.getQuestion(req['subchapter'])
     return jsonify({"success": "true" , "message": data})
 
+@app.route('/getGatesQuestion', methods=['POST'])
+def getGatesQuestion():
+    req = request.get_json()
+    data = database_helper.getGatesQuestion(req['subchapter'])
+    return jsonify({"success": "true" , "message": data})
+
+@app.route('/getKarnaughQuestion', methods=['POST'])
+def getKarnaughQuestion():
+    req = request.get_json()
+    data = database_helper.getKarnaughQuestion(req['subchapter'])
+    question = data['question']
+
+    table = str.split(data['answer'])
+    for index, value in enumerate(table):
+        if int(value, 16) > 0:
+            table[index] = 1
+
+    return jsonify({"success": "true" , "question": question, "table": table})
+
 @app.route('/pointsReq/<subchapter>', methods=['GET'])
 def pointsReq(subchapter):
     req = request.get_json()
@@ -260,6 +346,26 @@ def pointsReq(subchapter):
 def checkAnswer():
     req = request.get_json()
     status = database_helper.checkAnswer(req['subchapter'], req['question'], req['answer'])
+
+    if status == 1:
+        return ({"success": "true", "message": "correct answer"})
+    else:
+        return ({"success": "false", "message": "wrong answer"})
+
+@app.route('/checkGatesAnswer', methods=['POST'])
+def checkGatesAnswer():
+    req = request.get_json()
+    status = database_helper.checkGatesAnswer(req['subchapter'], req['question'], req['answer'], req['circuits'], req['truthTable'])
+
+    if status == 1:
+        return ({"success": "true", "message": "correct answer"})
+    else:
+        return ({"success": "false", "message": "wrong answer"})
+
+@app.route('/checkKarnaughAnswer', methods=['POST'])
+def checkKarnaughAnswer():
+    req = request.get_json()
+    status = database_helper.checkKarnaughAnswer(req['subchapter'], req['question'], req['answer'])
 
     if status == 1:
         return ({"success": "true", "message": "correct answer"})
@@ -318,7 +424,6 @@ def loadSetUp(subchapter):
     user = database_helper.selectUser(token)
     enlisted = database_helper.checkEnlisted(subchapter, user)
 
-
     if enlisted == 1:
         return jsonify({"success": "true" , "message": "Enlisted"})
     else:
@@ -336,27 +441,17 @@ def checkGrade(subchapter):
         return jsonify({"success": "false", "message": "Not Passed"})
 
 @app.route('/changePassword', methods=['POST'])
-def change_password():
+def changePassword():
+    token = request.headers['authorization'][7:]
     req = request.get_json()
-    token = request.headers.get('Authorization')[7:]
+
+    key  = bcrypt.generate_password_hash(req['password'])
+
     if database_helper.validateToken(token):
-        email = database_helper.tokenToEmail(token)
-
-        # print(bcrypt.check_password_hash(database_helper.getHash(email), req['oldPassword']))
-
-# In Python 3, you need to use decode(?utf-8?) on generate_password_hash(), like below:
-#
-# pw_hash = bcrypt.generate_password_hash(?hunter2?).decode(?utf-8?) ???????
-
-        if bcrypt.check_password_hash(database_helper.getHash(email), req['oldPassword']):
-
-            database_helper.replacePassword(token, bcrypt.generate_password_hash(req['newPassword']))
-            return jsonify({"success": "true", "message": "Password changed."})
-        else:
-            return jsonify({"success": "false", "message": "Wrong password." })
+        database_helper.replacePassword(token, key)
+        return jsonify({"success": "true", "message": "Password Changed." })
     else:
-        return jsonify({"success": "false", "message": "You are not signed in." })
-
+        return jsonify({"success": "false", "message": "Wrong Token." })
 
 @app.route('/getUserDataByToken', methods=['GET'])
 def get_user_data_by_token():
@@ -401,10 +496,15 @@ def loadStudents(option):
 def loadClasses(classes):
     token = request.headers['authorization'][7:]
     user = database_helper.tokenToEmail(token)
+    links = []
 
     if user != 0:
-        data = database_helper.loadClasses(classes);
-        return jsonify({"success": "true", "message": "Classes loaded.", "data": data})
+        names = database_helper.loadClasses(classes)
+        for entry in range(len(names)):
+            links.append(database_helper.getLink(names[entry]))
+        print(names)
+        print(links)
+        return jsonify({"success": "true", "message": "Classes loaded.", "names": names, "links": links})
     else:
         print("failure")
         return jsonify({"success": "false", "message": "You are not signed in." })
