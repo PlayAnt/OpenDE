@@ -200,7 +200,7 @@ def recoverPassword():
         msg['From'] = EMAIL_ADDRESS
         msg['To'] = info['email']
 
-        msg.set_content('Click on the link to recover password: http://127.0.0.1:8000/passwordRecovery/' + info['email'] + '/' + token)
+        msg.set_content('Click on the link to recover password: http://127.0.0.1:5000/passwordRecovery/' + info['email'] + '/' + token)
         # msg-add_alternative("""
         # <!DOCTYPE html >""")
 
@@ -540,10 +540,10 @@ def loadClassroomsStudent():
     return "Failed to find user by Token"
 
 if __name__ == '__main__':
-    http_server = WSGIServer(('127.0.0.1', 8080), app, handler_class = WebSocketHandler)
+    http_server = WSGIServer(('127.0.0.1', 5000), app, handler_class = WebSocketHandler)
     http_server.serve_forever()
     # app.run()
-    app.run(debug=True)
+    # app.run(debug=True)
 
 
     # app.debug = True

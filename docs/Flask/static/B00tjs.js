@@ -491,13 +491,13 @@ function checkGatesAnswer(subchapter, answer){
   var question= document.getElementById("question").innerHTML;
 
   document.getElementById(answer).style.borderColor  = "green";
-  a = document.getElementById('A').src.split("http://127.0.0.1:8000");
-  b = document.getElementById('B').src.split("http://127.0.0.1:8000");
-  c = document.getElementById('C').src.split("http://127.0.0.1:8000");
-  d = document.getElementById('D').src.split("http://127.0.0.1:8000");
+  a = document.getElementById('A').src.split("http://127.0.0.1:5000");
+  b = document.getElementById('B').src.split("http://127.0.0.1:5000");
+  c = document.getElementById('C').src.split("http://127.0.0.1:5000");
+  d = document.getElementById('D').src.split("http://127.0.0.1:5000");
   circuits = a[1] + " " + b[1] + " " + c[1] + " " + d[1];
 
-  truthTable = document.getElementById("truthTable").src.split("http://127.0.0.1:8000");
+  truthTable = document.getElementById("truthTable").src.split("http://127.0.0.1:5000");
   truthTable = truthTable[1];
 
   var xmlhttp = new XMLHttpRequest();
