@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>OpenDE</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="/static/B00tjs.js" type="text/javascript"></script>
+  <link href="/static/B00tstyle.css" rel="stylesheet">
+  <link rel="icon" href="data:;base64,=">
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">OpenDE</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+
+        <ul class="nav navbar-nav">
+          <li class="nav-item">
+            <a href="/index">Index</a>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a id="signOutButton" href="#logOutModal" class="glyphicon glyphicon-log-out" data-toggle="modal">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!--- Modal Log Out --->
+  <div id="logOutModal" class="modal fade">
+    <div class="modal-dialog modal-login">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Member Logout</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id = "signoutform" onsubmit="signOutValidation(); return false;">
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Logout</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div clas="pagination">
+      <div class="row padding">
+
+        <h1>Boolean Algebra and Karnaugh</h1>
+        <h2>Introduciton to Boolean Algebra</h2>
+        <h3>Boolean Algebra</h3>
+
+        <div class="col-md-6">
+          <p>Boolean algebra is the algebra of logical statements where variables are either
+            true or false. True and false is usually written as 1 and 2 respectively.</p>
+            <p>How you operators in programming languages sometimes varies, but in this course
+              we will stick to a specific set and trust that you later on can exchange the
+              symbols as required for future works. This is only to make it less confusing
+              while you are learning. In the table below the symbols and their meaning is
+              listed with an example.</p>
+
+              <table border="1" class="docutils">
+                <tr>
+                  <th> Operator </th>
+                  <th> Symbols </th>
+                  <th> Example </th>
+                </tr>
+                <tr>
+                  <td> AND </td>
+                  <td style="text-align:center"> * </td>
+                  <td> Y = A * B = AB </td>
+                </tr>
+                <tr>
+                  <td> OR </td>
+                  <td style="text-align:center"> + </td>
+                  <td> Y = A + B </td>
+                </tr>
+                <tr>
+                  <td> NOT </td>
+                  <td style="text-align:center"> ' </td>
+                  <td> Y = A' </td>
+                </tr>
+                <tr>
+                  <td> NAND </td>
+                  <td style="text-align:center">(*)' </td>
+                  <td> Y = (A * B)' = (AB)' </td>
+                </tr>
+                <tr>
+                  <td> NOR </td>
+                  <td style="text-align:center"> (+)' </td>
+                  <td> Y = (A + B)' </td>
+                </tr>
+                <tr>
+                  <td> XOR </td>
+                  <td style="text-align:center"> ⊕ </td>
+                  <td> Y = A ⊕ B </td>
+                </tr>
+                <tr>
+                  <td> XNOR </td>
+                  <td style="text-align:center"> (⊕)' </td>
+                  <td> Y = (A ⊕ B)' </td>
+                </tr>
+
+              </table>
+
+              <h3>One Variable Laws</h3>
+              <p>The following laws can be applied to one variable algebra:</p>
+              <div class="line-block">
+                <div class="line"><strong>L1</strong>: x + x = x</div>
+                <div class="line"><strong>L2</strong>: x * x = x</div>
+              </div>
+              <div class="line-block">
+                <div class="line"><strong>L3</strong>: x + x' = 1</div>
+                <div class="line"><strong>L4</strong>: x * x' = 0</div>
+              </div>
+              <div class="line-block">
+                <div class="line"><strong>L5</strong>: x + 1 = 1</div>
+                <div class="line"><strong>L6</strong>: x * 0 = 0</div>
+              </div>
+              <div class="line-block">
+                <div class="line"><strong>L7</strong>: x + 0 = x</div>
+                <div class="line"><strong>L8</strong>: x * 1 = x</div>
+              </div>
+              <div class="line-block">
+                <div class="line"><strong>L9</strong>: (x')' = x</div>
+              </div>
+
+              <h3>Multivariable Laws</h3>
+              <p>The following laws can be applied to multivariable algebra:</p>
+              <div class="line-block">
+                <div class="line"><strong>The Associative Laws</strong></div>
+                <div class="line">x + (y + z) = (x + y) + z</div>
+                <div class="line">x*(yz) = (xy)*z</div>
+              </div>
+              <div class="line-block">
+                <div class="line"><strong>The Commutative Laws</strong></div>
+                <div class="line">x + y = y + x</div>
+                <div class="line">xy = yx</div>
+              </div>
+              <div class="line-block">
+                <div class="line"><strong>The Distributive Laws</strong></div>
+                <div class="line">x(y + z) = xy + xz</div>
+                <div class="line">x + yz = (x + y)(x + z)</div>
+              </div>
+              <div class="line-block">
+                <div class="line"><strong>The Absorption Laws</strong></div>
+                <div class="line">x + xy = x</div>
+                <div class="line">x(x + y) = x</div>
+              </div>
+              <div class="line-block">
+                <div class="line"><strong>The Consensus Laws</strong></div>
+                <div class="line">xy + x'z = xy + x'y + yz</div>
+                <div class="line">(x + y)(x' + z) = (x + y)(x' + z)(y + z)</div>
+              </div>
+              <div class="line-block">
+                <div class="line"><strong>De Morgans Laws</strong></div>
+                <div class="line">(x + y)' = x'y'</div>
+                <div class="line">(xy)' = x' + y'</div>
+              </div>
+
+              <h2>Introduction to Karnaugh</h2>
+              <p> In this chapter your understanding of the gates and boolean algebra
+                will be tested as you learn to use the tool Karnaugh Maps. Karnaugh
+                maps utilize the humans ability to see patterns to determine the shortest
+                boolean expression.</p>
+
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/RO5alU6PpSU"></iframe>
+                </div>
+
+                <h2>Exercise</h2>
+
+                <form>
+                  <div class="row padding" >
+                    <div class="col-md-6" >
+                      <button id="startButton" type="submit" onclick="loadKarnaughQuestion('Introduction to Boolean Algebra and Karnaugh'); readPoints('Introduction to Boolean Algebra and Karnaugh'); return false;" class="btn btn-primary btn-lg btn-block">Start Exercise</button>
+                      <!-- loadKarnaugh(); -->
+                    </div>
+                  </div>
+                </form>
+
+                <div id="exerciseBlock" class="container-fluid Padding" style="visibility:hidden">
+                  <form id = "shiftingAnswer">
+                    <div class="row">
+
+                      <div class="col-md-12">
+                        <p id="question"> Hellu</p>
+                      </div>
+
+                      <div class="col-md-12">
+                        <table>
+                          <tr>
+                            <th> <p> </p> </th>
+                            <th> <p> </p> </th>
+                            <th> <p> </p> </th>
+                            <th> <p> </p> </th>
+                            <th> <p> AB </p> </th>
+                            <th> <p> </p> </th>
+                          </tr>
+                          <tr>
+                            <th style="text-align:center"> <p></p> </th>
+                            <th style="text-align:center"> <p></p> </th>
+                            <th style="text-align:center"> <p> 00 </p> </th>
+                            <th style="text-align:center"> <p> 01 </p> </th>
+                            <th style="text-align:center"> <p> 11 </p> </th>
+                            <th style="text-align:center" > <p> 10 </p> </th>
+                          </tr>
+                          <tr>
+                            <th> <p> </p> </th>
+                            <th> <p> 00 </p> </th>
+                            <th id="AA"><img id="oneA" src="" width="100" height="100" onclick="mark('AA');"></th>
+                            <th id="AB"><img id="oneB" src="" width="100" height="100" onclick="mark('AB');"></th>
+                            <th id="AC"><img id="oneC" src="" width="100" height="100" onclick="mark('AC');"></th>
+                            <th id="AD"><img id="oneD" src="" width="100" height="100" onclick="mark('AD');"></th>
+                          </tr>
+                          <tr>
+                            <th style="vertical-align:bottom"> <p> CD </p> </th>
+                            <th> <p> 01 </p> </th>
+                            <th id="BA"><img id="twoA" src="" width="100" height="100" onclick="mark('BA');"></th>
+                            <th id="BB"><img id="twoB" src="" width="100" height="100" onclick="mark('BB');"></th>
+                            <th id="BC"><img id="twoC" src="" width="100" height="100" onclick="mark('BC');"></th>
+                            <th id="BD"><img id="twoD" src="" width="100" height="100" onclick="mark('BD');"></th>
+                          </tr>
+                          <tr>
+                            <th> <p> </p> </th>
+                            <th> <p> 11 </p> </th>
+                            <th id="CA"><img id="threeA" src="" width="100" height="100" onclick="mark('CA');"></th>
+                            <th id="CB"><img id="threeB" src="" width="100" height="100" onclick="mark('CB');"></th>
+                            <th id="CC"><img id="threeC" src="" width="100" height="100" onclick="mark('CC');"></th>
+                            <th id="CD"><img id="threeD" src="" width="100" height="100" onclick="mark('CD');"></th>
+                          </tr>
+                          <tr>
+                            <th> <p> </p> </th>
+                            <th> <p> 10 </p> </th>
+                            <th id="DA"><img id="fourA" src="" width="100" height="100" onclick="mark('DA');"></th>
+                            <th id="DB"><img id="fourB" src="" width="100" height="100" onclick="mark('DB');"></th>
+                            <th id="DC"><img id="fourC" src="" width="100" height="100" onclick="mark('DC');"></th>
+                            <th id="DD"><img id="fourD" src="" width="100" height="100" onclick="mark('DD');"></th>
+                          </tr>
+                        </table>
+                      </div>
+
+                      <div class="row">
+                        <button id="colorButton" onclick="boggle('colorButton'); return false;" style="background-color: #00FF00" class="btn">Green</button>
+                        <button id="submit" onclick="submitKarnaugh('Introduction to Boolean Algebra and Karnaugh'); return false;" class="btn">Submit</button>
+                      </div>
+
+
+                  <div class="row padding">
+                    <div class="col-md-12">
+
+                      <table>
+                        <tr>
+                          <th> <p>Points Required: </p> </th>
+                          <td> <p id="pointsReq"> 0 </p> </td>
+                        </tr>
+                        <tr>
+                          <th> <p>Your Required: </p> </th>
+                          <td> <p id="pointsYour"> 0 </p> </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </form>
+
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="/index">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="/index">Next</a></li>
+              </ul>
+            </div>
+        </div>
+
+      </body>
+      </html>

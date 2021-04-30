@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="B00tjs.js" type="text/javascript"></script>
+  <link href="B00tstyle.css" rel="stylesheet">
+</head>
+<body>
+
+  <!--- Navbar --->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">OpenDE</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+
+          <li class="nav-item">
+            <a href="home.html" class="nav-link active" data-toggle="tab">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="binary.html" class="nav-link" data-toggle="tab">Binary</a>
+          </li>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#SignUpModal" class="glyphicon glyphicon-user" data-toggle="modal"> Sign up</a></li>
+          <li><a href="#logInModal" class="glyphicon glyphicon-log-in" data-toggle="modal">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!--- Modal Log In --->
+  <div id="logInModal" class="modal fade">
+    <div class="modal-dialog modal-login">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Member Login</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form action="/examples/actions/confirmation.php" method="post">
+            <div class="form-group">
+              <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            </div>
+            <div class="form-group">
+              <select class="form-control" id="formAccountType" mmultipe title="Account Type?">
+                <option selected>Choose...</option>
+                <option>For Fun</option>
+                <option>For Student</option>
+                <option>For Teacher</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--- Modal Sign Up --->
+  <div id="SignUpModal" class="modal fade">
+    <div class="modal-dialog modal-login">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Member Sign Up</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form action="/examples/actions/confirmation.php" method="post">
+            <div class="form-group">
+              <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            </div>
+            <div class="form-group">
+              <input type="confirmPassword" class="form-control" name="confirmPasswordpassword" placeholder="Confirm Password" required="required">
+            </div>
+            <div class="form-group">
+              <select class="form-control"  id="formAccountType">
+                <option selected>Choose...</option>
+                <option>For Fun</option>
+                <option>For Student</option>
+                <option>For Teacher</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="tab-content">
+  <div class="tab-pane fade in active" id="home.html">
+
+    <!-- <script type="text/view" id="welcomeview"> -->
+    <!--- Jombotron --->
+    <div class="jumbotron text-center">
+      <h1>Welcome to OpenDE</h1>
+      <p>Learn digital electronics in a fun and easy way!</p>
+    </div>
+
+    <!--- Three Accounts Header --->
+    <div class="container-fluid padding">
+      <div class="row welcome text-center">
+        <div class="col-12">
+          <h1 class="display-4"> Three different types of accounts. </h1>
+          <hr/>
+        </div>
+      </div>
+    </div>
+
+    <!--- The three --->
+    <div class="container-fluid Padding">
+      <div class="row padding">
+
+        <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="_images/AND_gate.png">
+            <div class="card-body">
+              <h3 class=card-title>For Fun</h3>
+              <p class=card-text> Learn Digital Electronics at your own pace totally unsupervised</p>
+              <button type="button" class="btn">Join for fun.</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="_images/OR_gate.png">
+            <div class="card-body">
+              <h3 class=card-title>For Students</h3>
+              <p class=card-text> Join a supervised class held by a teacher who can see your progression
+                and eventually give you your hard earned grade.</p>
+                <button type="button" class="btn">Join for class.</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card">
+              <img class="card-img-top" src="_images/NOT_gate.png">
+              <div class="card-body">
+                <h3 class=card-title>For Teachers</h3>
+                <p class=card-text> Create a classroom where you can observe your students progression.</p>
+                <button type="button" class="btn">Create class.</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="binary">
+      <div class="container">
+        <div clas="pagination">
+          <div class="row padding">
+            <h1>Introduction to Binary</h1>
+            <h2>Lesson</h2>
+
+            <div class="col-md-6">
+              <p>Binary is a counting system that is of the base-2 in difference from the normal
+                decimal (base-10) system that you are probably most used to.</p>
+
+                <p>Instead of using all the 10 digits in different combinations to represent
+                  numbers it uses only ones and zeros.
+                </p>
+                <p>In a binary number each digit represents a 2^x where x is the position - one
+                  From the right. The first digit from right therefore represent the number 1,
+                  the second represents 2 etc.
+                </p>
+                <p>Binary numbers are often represented with 8 or 16 digits, for reasons explained
+                  in the “Bits and words” sub-chapter. In this course we will split up binary
+                  numbers into chunks of four with space for two reasons. Primarily because it
+                  makes them more readable but also to prepare you for the <em>Hexadecimal</em>
+                  sub-chapter.
+                </p>
+                <p>The table below simplifies what is written.
+                </p>
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Position</th>
+                      <th>8</th>
+                      <th>7</th>
+                      <th>6</th>
+                      <th>5</th>
+                      <th>4</th>
+                      <th>3</th>
+                      <th>2</th>
+                      <th>1</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td></td>
+                      <td>2⁷</td>
+                      <td>2⁶</td>
+                      <td>2⁵</td>
+                      <td>2⁴</td>
+                      <td>2³</td>
+                      <td>2²</td>
+                      <td>2¹</td>
+                      <td>2⁰</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>128</td>
+                      <td>64</td>
+                      <td>32</td>
+                      <td>16</td>
+                      <td>8</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>1</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>The number 0011 0011 is therefore:</p>
+                <p>0*2⁷ + 0*2⁶ + 1*2⁵ + 1*2⁴ + 0*2³ + 0*2² + 1*2¹ + 1*2⁰ =</p>
+                <p>2⁵ + 2⁴ + 2¹ + 2⁰ =</p>
+                <p>32 + 16 + 2 + 1 =</p>
+                <p>51</p>
+              </div>
+
+            </div>
+          </div>
+
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>

@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="row padding">
+    <h1>Shifting and Fractions</h1>
+    <h2>Lesson</h2>
+
+    <div class="col-md-6">
+      <h3>Fractions</h3>
+      <p>Fractions in binary can be performed but is a bit more tricky. The numbers
+        after the dot in a fractional binary number represents the power of negative
+        numbers. See the table below for a simple visual explanation.</p>
+
+        <table class="table">
+          <thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td>2⁴</td>
+                <td>2³</td>
+                <td>2²</td>
+                <td>2¹</td>
+                <td>2⁰</td>
+                <td>2^(-1)</td>
+                <td>2^(-2)</td>
+                <td>2^(-3)</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>16</td>
+                <td>8</td>
+                <td>4</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1/2</td>
+                <td>1/4</td>
+                <td>1/8</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>The number 1 0001.101 in base-2 = 16  + 1 +1/2 + 1/8  = 17,625 in base-10</p>
+
+          <h3>Shifting</h3>
+
+          <p>Multiplying a binary number by two is easy, to do so one only need to shift all
+            the digits a step to the left and adding a 0 where the first digit used to be.
+            This is called a left shift. For example:</p>
+
+            <p>01100110 multiplied with two =
+              11001100</p>
+
+              <p>Shifting to the right is basically a division by 2 and functions in a very similar
+                way, shift all the digits to the right and adding a zero on the left side.
+                For example:</p>
+
+                <p>0110 0110 divided by two =
+                  0011 0011</p>
+
+                  <p>Unless you use fractions he decimal will be lost and a true division by two
+                    will not give the true answer when you right shift odd numbers.</p>
+
+                    <p>0011 0011 divided by two =
+                      0001 1001</p>
+
+                      <h2>Exercise</h2>
+
+                      <form>
+                        <button id="startButton" type="submit" onclick="loadShiftingQuestion(); return false;" class="btn btn-primary btn-lg btn-block">Start Exercise</button>
+                      </form>
+
+                      <div id="shiftingExerciseBlock" class="container-fluid Padding" style="visibility:hidden">
+                        <form id = "shiftingAnswer">
+                          <div class="row padding">
+
+                            <div class="col-md-6">
+                              <div id="shiftingQuestion">
+
+                              </div>
+                            </div>
+
+                            <script type="text/view" id="shifting1">
+                              <p> What is 1101.1100 in decimal? </p>
+                            </script>
+
+                            <script type="text/view" id="shifting2">
+                              <p> What is 1001.0011 in decimal? </p>
+                            </script>
+
+                            <script type="text/view" id="shifting3">
+                              <p> What is 0011 0101 left shifted twice? </p>
+                            </script>
+
+                            <script type="text/view" id="shifting4">
+                              <p> Is 0011 0101 right shifted once a true division with 2? Y/N </p>
+                            </script>
+
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <input id=shiftingAnswerField type="text" class="form-control" id="usr">
+                              </div>
+                            </div>
+
+                            <div class="col-md-1">
+                              <div class="form-group">
+                                <button type="submit" onclick="checkAnswer(); return false;" class="btn">Answer</button>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                        <!-- </form> -->
+                      </div>
+                    </div>
+
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link" href="binary.html">Previous</a></li>
+                      <li class="page-item"><a class="page-link" href="shifting.html">Next</a></li>
+                    </ul>
+                  </div>
