@@ -691,19 +691,23 @@ function loadIndex(subchapter){
       }
       if(returned.success == "true"){
         if (subchapter == "Introduction to Binary"){
-          document.getElementById("binaryBlock").style.visibility="visible";
+          // document.getElementById("binaryBlock").style.visibility="visible";
+          document.getElementById("binaryBlock").style.display="block";
           return 1;
 
         } else if (subchapter == "Introduction to Hexadecimals"){
-          document.getElementById("hexaBlock").style.visibility="visible";
+          // document.getElementById("hexaBlock").style.visibility="visible";
+          document.getElementById("hexaBlock").style.display="block";
           return 1;
 
         } else if (subchapter == "AND, OR and NOT"){
-          document.getElementById("simpleLogicGatesBlock").style.visibility="visible";
+          // document.getElementById("simpleLogicGatesBlock").style.visibility="visible";
+          document.getElementById("simpleLogicGatesBlock").style.display="block";
           return 1;
 
         } else if (subchapter == "Introduction to Boolean Algebra and Karnaugh"){
           document.getElementById("booleanAndKarnaugh").style.visibility="visible";
+          document.getElementById("booleanAndKarnaugh").style.display="block";
           return 1;
 
         } else {
