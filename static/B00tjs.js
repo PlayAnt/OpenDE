@@ -706,7 +706,7 @@ function loadIndex(subchapter){
           return 1;
 
         } else if (subchapter == "Introduction to Boolean Algebra and Karnaugh"){
-          document.getElementById("booleanAndKarnaugh").style.visibility="visible";
+          // document.getElementById("booleanAndKarnaugh").style.visibility="visible";
           document.getElementById("booleanAndKarnaugh").style.display="block";
           return 1;
 
@@ -1279,3 +1279,29 @@ function karnaughReset(){
 function toHex(d) {
   return  ("0"+(Number(d).toString(16))).slice(-2).toUpperCase()
 };
+
+// function indexOrSchool(){
+//   var xmlhttp = new XMLHttpRequest();
+//   xmlhttp.open("GET", '/accountType');
+//   xmlhttp.setRequestHeader("Authorization", 'Bearer ' + sessionStorage.getItem('token'));
+//
+//   xmlhttp.onreadystatechange = function() {
+//     if(this.readyState == 4 && this.status == 200){
+//       var returned = JSON.parse(this.responseText)
+//       if(returned.success == "false"){
+//         alert("failure");
+//         return -1;
+//       }
+//       if(returned.success == "true"){
+//         if (returned.type == "For Fun"){
+//           window.location.href = '/index';
+//         } else {
+//           window.location.href = '/school';
+//         }
+//         return 1;
+//       }
+//     }
+//   }
+//   xmlhttp.send();
+//   return 0;
+// };

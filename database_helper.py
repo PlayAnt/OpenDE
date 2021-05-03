@@ -48,7 +48,6 @@ def addUserToCourse(user, course):
         addUserToSimpleLogicGates(user)
 
     if course["booleanAndKarnaugh"] == "true":
-        print("addUserToCourse")
         addUserToBooleanAndKarnaugh(user)
 
     conn.commit()
@@ -86,6 +85,7 @@ def checkExistingUser(user, course):
         status = row[0]
         break
 
+    conn.close()
     if status != '':
         return 1
 
@@ -191,7 +191,6 @@ def validatePassword(token, password):
         return 0
 
     conn.close()
-
     return confirmPassword(email, password)
 
 def replacePassword(token, newPassword):
@@ -232,23 +231,8 @@ def validateEmail(email, accountType):
         break
 
     if (confirmEmail != ""):
+        conn.close()
         return 1
-
-    # if confirmEmail == email:
-    #     for row in conn.execute("SELECT accountType FROM user WHERE email = ?", (email,)):
-    #         confirmAccountType = row[0]
-    #         break
-    #
-    #     if confirmAccountType == accountType:
-    #         conn.close()
-    #         return 1
-    #     else:
-    #         conn.close()
-    #         return 0
-    #
-    # else:
-        # conn.close()
-        # return 0
 
     conn.close()
     return 0
@@ -272,7 +256,6 @@ def setToken(token, email):
     return 0
 
 def setLoggedOut(token):
-    print("setLoggedOut")
     conn = sqlite3.connect('database.db')
 
     conn.execute("UPDATE user SET loggedIn = 0, token = 0 WHERE token = ?", (token,));
@@ -283,30 +266,6 @@ def setLoggedOut(token):
 
 def selectUser(token):
     return tokenToEmail(token)
-    # email = tokenToEmail(token)
-    # return selectUserByEmail(token, email)
-
-# def selectUserByEmail(token, email):
-#     if validateToken(token) == 1:
-#         conn = sqlite3.connect('database.db')
-#
-#         for row in conn.execute("SELECT * FROM user WHERE email = ?", (email,)):
-#             data = {
-#             'email': row[0],
-#             'firstName' : row[2],
-#             'familyName' : row[3],
-#             'gender' : row[4],
-#             'city' : row[5],
-#             'country' : row[6]
-#             }
-#             break
-#         else:
-#             conn.close()
-#             return 0
-#         conn.close()
-#         return data
-#     else:
-#         return -1
 
 def validateToken(token):
     conn = sqlite3.connect('database.db')
@@ -333,29 +292,6 @@ def tokenToEmail(token):
     conn.close()
     return email
 
-# def insertGrade(email, chapter, subchapter):
-#     conn = sqlite3.connect('database.db')
-#
-#     confirmEmail = ""
-#
-#     for row in conn.execute("SELECT id FROM ? WHERE email = ?", (chapter, email,)):
-#         confirmEmail = row[0]
-#         break
-#
-#     if confirmEmail == email:
-#         conn.execute("UPDATE ? SET ?=1 WHERE email=?", (chapter, subchapter, email,)):
-#         conn.commit()
-#         conn.close()
-#         return 1
-#
-#     else:
-#         conn.close()
-#         return 0
-#
-#     conn.close()
-#     return 0
-
-
 def getQuestion(subchapter):
     conn = sqlite3.connect('database.db')
 
@@ -368,7 +304,6 @@ def getQuestion(subchapter):
         return 0
 
     conn.close()
-
     return question
 
 def getGatesQuestion(subchapter):
@@ -389,7 +324,6 @@ def getGatesQuestion(subchapter):
         return 0
 
     conn.close()
-
     return data
 
 def getKarnaughQuestion(subchapter):
@@ -409,7 +343,6 @@ def getKarnaughQuestion(subchapter):
         return 0
 
     conn.close()
-
     return data
 
 def checkAnswer(subchapter, question, answer):
@@ -429,7 +362,6 @@ def checkAnswer(subchapter, question, answer):
         return 0
 
     conn.close()
-
     return 0
 
 def checkGatesAnswer(subchapter, question, answer, circuits, truthTable):
@@ -449,7 +381,6 @@ def checkGatesAnswer(subchapter, question, answer, circuits, truthTable):
         return 0
 
     conn.close()
-
     return 0
 
 def checkKarnaughAnswer(subchapter, question, answer):
@@ -457,21 +388,9 @@ def checkKarnaughAnswer(subchapter, question, answer):
 
     correctAnswer = ""
 
-    print(subchapter)
-    print('subchapter')
-
-    print('question')
-    print(question)
-
-    print('answer')
-    print(answer)
-
     for row in conn.execute("SELECT answer FROM karnaughQuestions WHERE subchapter = ? AND question = ?", (subchapter, question)):
         correctAnswer = row[0]
         break
-
-    print('correctAnswer')
-    print(correctAnswer)
 
     if correctAnswer == answer:
         conn.close()
@@ -481,7 +400,6 @@ def checkKarnaughAnswer(subchapter, question, answer):
         return 0
 
     conn.close()
-
     return 0
 
 def pointsReq(subchapter):
@@ -512,7 +430,6 @@ def addPoint(subchapter, user):
         conn.commit()
 
     conn.close()
-
     return 0
 
 def subtractPoint(subchapter, user):
@@ -644,6 +561,7 @@ def joinClass(name, key, user):
             addToSolvedCaller(id, user)
             joinClassroom(id, user)
     else:
+        conn.close()
         return 0;
 
     return 1;
@@ -720,14 +638,6 @@ def loadStudents(option):
     names = cursor.fetchall()
     data_row = len(names)
 
-    # points = []
-    # for d in range(data_row):
-    #     points.append(sumPoints(names[d]))
-    #
-    # passed = []
-    # for d in range(data_row):
-    #     passed.append(sumPassed(names[d]))
-
     cursor.execute("SELECT lesson FROM solved WHERE user = ?",(id,))
     courses = cursor.fetchall()
 
@@ -736,10 +646,6 @@ def loadStudents(option):
     points = []
     list
 
-    # for i in range(3):
-    #     for j in range(3):
-    #         print(i*3+j)
-
     for i in range(data_row):
         for j in range(data_width):
             cursor.execute("SELECT points FROM solved WHERE user = ? AND lesson = ?", (names[i], courses[j]))
@@ -747,17 +653,13 @@ def loadStudents(option):
 
             points.append({'name': names[i], 'lesson': courses[j], 'points': k})
 
+    conn.close()
 
     data = {
     "names": names,
     "courses": courses,
     "points": points
-    # "passed": passed,
-    # "maxPoints": 45,
-    # "maxPassed": 7
     }
-
-    print(data)
 
     return data
 
@@ -769,6 +671,7 @@ def loadClassrooms(admin):
     cursor.execute("SELECT name FROM class WHERE admin = ?", (admin,))
     data = cursor.fetchall()
 
+    conn.close()
     return data
 
 def loadClassroomsStudent(student):
@@ -784,6 +687,7 @@ def loadClassroomsStudent(student):
 
     data = cursor.fetchall()
 
+    conn.close()
     return data
 
 def loadClasses(classes):
@@ -799,6 +703,7 @@ def loadClasses(classes):
     WHERE class.name = ?""", (classes,))
 
     courses = cursor.fetchall()
+    conn.close()
     return courses
 
 def getLink(subchapter):
@@ -852,3 +757,10 @@ def recoverPassword(user, type):
     conn.commit()
     conn.close()
     return token
+
+# def checkType(token):
+#     conn = sqlite3.connect('database.db')
+#
+#     type = conn.execute("SELECT accountType from user WHERE token = ?", (token,));
+#
+#     return type
